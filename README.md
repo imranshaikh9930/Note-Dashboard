@@ -90,6 +90,9 @@ Built with **Tailwind CSS** and **Framer Motion** for modern animations and styl
 
 └── index.js
 
+----------------------------------------------------------------
+Deployed Link
+https://note-dashboard-frontend-03.onrender.com/
 
 
 
