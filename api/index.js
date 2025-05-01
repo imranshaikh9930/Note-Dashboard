@@ -14,10 +14,9 @@ const PORT = process.env.PORT || 3800;
 app.use(express.json());
 
 app.use(cors({
-    origin: 'https://note-dashboard-frontend-2.onrender.com', // or your deployed frontend URL
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: "true", // if sending cookies
-  }));
+  origin: "https://note-dashboard-frontend-2.onrender.com/",
+  credentials: true,
+}));
 
 app.use("/api/auth",userRoutes)
 app.use("/api/user",noteRoutes)
