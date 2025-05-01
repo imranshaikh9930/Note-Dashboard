@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://note-dashboard.onrender.com/api', // Replace with your actual API base URL
+  baseURL: 'https://note-dashboard-backend-01.onrender.com/api', // Replace with your actual API base URL
   headers: {
     'Content-Type': 'application/json',
   },

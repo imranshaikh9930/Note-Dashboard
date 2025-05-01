@@ -12,7 +12,7 @@ const ProtectedRoute = ({ children }) => {
     const checkAuth = async () => {
       try {
         
-        const res = await axios.get("https://note-dashboard.onrender.com/protected", {
+        const res = await axios.get("https://note-dashboard-backend-01.onrender.com/protected", {
           withCredentials: true,
         });
         
