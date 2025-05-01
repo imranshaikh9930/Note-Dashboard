@@ -8,13 +8,16 @@ const ProtectedRoute = ({ children }) => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
+
     const checkAuth = async () => {
       try {
         
-        const res = await axios.get("http://localhost:3500/protected", {
+        const res = await axios("https://note-dashboard.onrender.com/protected", {
           withCredentials: true,
+          credentials: 'include'
         });
-
+        
+        console.log("res abhi",res);
         if (res.status === 200 && res.data.user) {
           setAuthenticated(true);
         } else {

@@ -58,36 +58,31 @@ const loginController = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Check if email & password provided
     if (!email || !password) {
       return res.status(400).json({ message: "Email and password required" });
     }
 
-    // Find user
     const userExist = await User.findOne({ email });
     if (!userExist) {
       return res.status(400).json({ message: "Register first" });
     }
 
-    // Compare passwords
     const isPassword = await bcrypt.compare(password, userExist.password);
     if (!isPassword) {
       return res.status(400).json({ message: "Incorrect password" });
     }
 
-    // Create JWT
     const token = generateToken(userExist);
 
-    // Set JWT in cookie (HTTP only)
+    // Set secure cookie
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      secure: process.env.NODE_ENV === "production", // Ensures HTTPS in production
+      sameSite: "None", // Needed for cross-site cookies
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
-    // Send user info (optional: omit password)
-    res.status(200).json({
+    return res.status(200).json({
       message: "Login successful",
       user: {
         id: userExist._id,
@@ -97,9 +92,10 @@ const loginController = async (req, res) => {
     });
   } catch (error) {
     console.error("Signin Error:", error.message);
-    res.status(500).json({ message: "Internal Server Error" });
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
 
 
 const googleController = async (req, res) => {

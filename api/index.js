@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cors({
     origin: 'http://localhost:5173', // or your deployed frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true, // if sending cookies
+    credentials: "true", // if sending cookies
   }));
 
 app.use("/api/auth",userRoutes)

@@ -12,7 +12,7 @@ const GoogleLogin = () => {
 
   const responseGoogle = async (authResult) => {
     try {
-      console.log(authResult)
+      // console.log(authResult)
       if (authResult.code) {
         const result = await googleAuth(authResult.code);
         const { email, name } = result.data.user;
