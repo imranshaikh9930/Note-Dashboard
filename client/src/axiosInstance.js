@@ -6,8 +6,7 @@ const axiosInstance = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true, 
-  credentials: 'include',// Optional: if you're using cookies/session-based auth
+  withCredentials: true, // Optional: if you're using cookies/session-based auth
 });
 
 export const googleAuth = (code) => axiosInstance.post(`/auth/google`, { code });
